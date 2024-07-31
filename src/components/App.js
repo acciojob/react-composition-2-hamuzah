@@ -1,5 +1,5 @@
+// App.js
 import React, { useState } from 'react';
-//import Modal from './components/Modal';
 import Modal from './Modal';
 import "../styles/App.css"
 
@@ -11,15 +11,14 @@ const App = () => {
   };
 
   return (
-    <div className='modal'>
+    <div>
       <button id='open' onClick={() => setShowModal(true)}>Open Modal</button>
       <Modal show={showModal} onClose={handleCloseModal}>
         {/* Content for the modal */}
-        <div className='modal'>
-        <h2>Modal Title</h2>
-        <p>This is the content of the modal.</p>
+        <div className='modal-content'>
+          <h2>Modal Title</h2>
+          <p>This is the content of the modal.</p>
         </div>
-
       </Modal>
     </div>
   );
