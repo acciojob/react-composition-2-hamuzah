@@ -1,16 +1,25 @@
-// Modal.js
-import React from 'react';
+import React, { useRef } from 'react';
 
 const Modal = ({ show, onClose, children }) => {
-  if (!show) return null;
+  const modalRef = useRef(null);
+
+  const handleCloseModal = (event) => {
+    if (event.target === modalRef.current) {
+      onClose();
+    }
+  };
+
+  if (!show) {
+    return null;
+  }
 
   return (
-    <div className="model-overlay">
-      <div className="model-content">
-        <button className="model-close" onClick={onClose}>
+    <div className="modal-overlay" onClick={handleCloseModal} ref={modalRef}>
+      <div className="modal-dialog" onClick={onClose}>
+        <button className="modal-close" onClick={onClose}>
           Close
         </button>
-        {children}
+        <div className="modal-content">{children}</div>
       </div>
     </div>
   );
